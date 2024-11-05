@@ -25,11 +25,7 @@ namespace drinks
         public MainWindow()
         {
             InitializeComponent();
-
-            // 讀取飲料品項檔案
             AddNewDrink(drinks);
-
-            // 顯示飲料品項
             DisplayDrinkMenu(drinks);
         }
 
@@ -56,7 +52,7 @@ namespace drinks
 
         private void DisplayDrinkMenu(Dictionary<string, int> drinks)
         {
-            //stackpanel_DrinkMenu.Children.Clear();
+            
             stackpanel_DrinkMenu.Height = 42 * drinks.Count;
             foreach (var drink in drinks)
             {
@@ -132,14 +128,13 @@ namespace drinks
             var rb = sender as RadioButton;
             if (rb.IsChecked == true)
             {
-                //MessageBox.Show(rb.Content.ToString());
                 takeout = rb.Content.ToString();
             }
         }
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            // 確認訂購內容
+            
             orders.Clear();
             for (int i = 0; i < stackpanel_DrinkMenu.Children.Count; i++)
             {
@@ -152,7 +147,7 @@ namespace drinks
                 if (cb.IsChecked == true && amount > 0) orders.Add(drinkName, amount);
             }
 
-            // 顯示訂購內容
+            
             string msg = "";
             string discount_msg = "";
             int total = 0;
